@@ -4,7 +4,10 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
-const dbUri = process.env.MONGO_LOCAL_URL;
+const environment = process.env.NODE_ENV;
+const stage = require('../config')[environment];
+
+const dbUri = stage.dbUrl;
 
 module.exports = {
   register: (req, res) => {

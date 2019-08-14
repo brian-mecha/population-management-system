@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
 const bcrypt = require('bcrypt');
+const findOrCreate = require('mongoose-findorcreate');
 
 const saltRounds = 10;
 
@@ -39,5 +40,6 @@ userSchema.pre('save', function (next) {
 });
 
 userSchema.plugin(uniqueValidator);
+userSchema.plugin(findOrCreate);
 
 module.exports = mongoose.model('User', userSchema);
