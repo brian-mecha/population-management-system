@@ -12,12 +12,16 @@ describe('Location controller', () => {
       },
     };
     const res = await testHelpers.withLogin(request(server).post('/api/v1/locations').send(body));
+    console.log('>>>>>', res.error);
+
 
     expect(res.status).toBe(201);
   });
 
   it('should get all locations', async () => {
     const res = await testHelpers.withLogin(request(server).get('/api/v1/locations'));
+    console.log('>>>>>', res.error);
+
     expect(res.status).toBe(200);
   });
 

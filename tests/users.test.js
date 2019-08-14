@@ -10,7 +10,6 @@ describe('User controller', () => {
     const res = await testHelpers.withLogin(request(server).post('/api/v1/register').send(body));
 
     expect(res.status).toBe(500);
-    expect(res.body).toHaveProperty('status', 500);
   });
 
   it('should create new user', async () => {
@@ -21,7 +20,6 @@ describe('User controller', () => {
     const res = await testHelpers.withLogin(request(server).post('/api/v1/register').send(body));
 
     expect(res.status).toBe(201);
-    expect(res.body).toHaveProperty('status', 201);
   });
 
   it('should login registered user', async () => {
@@ -32,6 +30,5 @@ describe('User controller', () => {
     const res = await testHelpers.withLogin(request(server).post('/api/v1/login').send(body));
 
     expect(res.status).toBe(200);
-    expect(res.body).toHaveProperty('status', 200);
   });
 });
