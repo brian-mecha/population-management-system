@@ -3,7 +3,10 @@ const mongoose = require('mongoose');
 const mongodb = require('mongodb');
 const Location = require('../models/Location');
 
-const dbUri = process.env.MONGO_LOCAL_URL;
+const environment = process.env.NODE_ENV;
+const stage = require('../config')[environment];
+
+const dbUri = stage.dbUrl;
 
 module.exports = {
   add: (req, res) => {
